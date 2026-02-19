@@ -127,7 +127,7 @@ export const Header = () => {
               {/* Logo */}
               <Link to="/" className="flex items-center space-x-3 group">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all">
-                  <span className="text-white font-bold text-xl">H</span>
+                  <span className="text-white font-bold text-xl">HH</span>
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent hidden sm:block">
                   HealthBridge
