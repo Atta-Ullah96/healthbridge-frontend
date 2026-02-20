@@ -130,7 +130,7 @@ export const Header = () => {
                   <span className="text-white font-bold text-xl">H</span>
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent hidden sm:block">
-                  HealthBridge
+                  HealthBridges
                 </span>
               </Link>
 
