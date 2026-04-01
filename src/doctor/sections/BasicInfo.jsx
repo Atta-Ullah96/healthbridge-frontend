@@ -11,7 +11,6 @@ function BasicInfo() {
  
   
   const [selectedFile, setSelectedFile] = useState(null);
-  console.log(selectedFile.size)
   const [editing, setEditing] = useState(false);
   const fileInputRef = useRef(null);
   const { data } = useGetBasicInfoQuery();
