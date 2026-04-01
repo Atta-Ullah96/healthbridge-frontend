@@ -82,12 +82,14 @@ function BasicInfo() {
           purpose:"profile_photo"
         }).unwrap();
 
-        await fetch(initRes.signedUrl, {
+      const response =    await fetch(initRes.signedUrl, {
           method: "PUT",
           headers: { "Content-Type": selectedFile.type },
           body: selectedFile,
         });
 
+        console.log(response.status);
+        
         await completeUpload({ uploadId: initRes.uploadId }).unwrap();
         profileImageId = initRes?.uploadId;
       }
