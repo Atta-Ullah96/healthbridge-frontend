@@ -1,249 +1,248 @@
-import { useState } from "react";
-import { 
-  Search, MapPin, Star, Shield, CheckCircle, 
-  Clock, Video, ArrowRight, Calendar, Heart
-} from "lucide-react";
+import { CheckCircle, Star, Shield, Video, ArrowRight, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const doctors = [
+  {
+    name: "Dr. Sarah Khan",
+    specialty: "Cardiologist",
+    rating: 4.9,
+    reviews: 234,
+    available: true,
+    img: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    name: "Dr. Ali Raza",
+    specialty: "Dermatologist",
+    rating: 4.8,
+    reviews: 187,
+    available: true,
+    img: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+];
+
+const stats = [
+  { value: "2,500+", label: "Verified Doctors" },
+  { value: "50K+",   label: "Happy Patients"  },
+  { value: "4.9",    label: "Avg. Rating", star: true },
+];
+
+const features = [
+  {
+    icon: Clock,
+    color: "bg-blue-50 text-blue-600",
+    title: "Book in Minutes",
+    desc: "Same-day appointments available with top specialists.",
+  },
+  {
+    icon: Shield,
+    color: "bg-emerald-50 text-emerald-600",
+    title: "PMC Verified",
+    desc: "Every doctor is certified and thoroughly verified.",
+  },
+  {
+    icon: Video,
+    color: "bg-violet-50 text-violet-600",
+    title: "Video Consult",
+    desc: "See a doctor from the comfort of your home.",
+  },
+];
 
 export function Hero() {
-  const [query, setQuery] = useState("");
-  const [location, setLocation] = useState("");
-  const [activeChip, setActiveChip] = useState("All");
-  const chips = ["All", "Cardiology", "Pediatrics", "Dentistry", "Dermatology", "Psychiatry"];
-
   return (
-    <div className="bg-white">
-     
+    <section className="bg-white overflow-hidden">
 
-      {/* Hero Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side */}
+      {/* ── Main Hero ── */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+          {/* ── Left: Copy ── */}
           <div>
-            {/* Simple Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-6">
-              <CheckCircle size={18} className="text-blue-600" />
-              <span className="text-sm font-medium text-blue-900">Trusted by 50,000+ patients</span>
+            {/* Trust badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-50 border border-blue-100 rounded-full mb-7">
+              <CheckCircle size={15} className="text-blue-600" />
+              <span className="text-sm font-semibold text-blue-800">
+                Trusted by 50,000+ patients across Pakistan
+              </span>
             </div>
 
-            {/* Main Heading - Simple & Clear */}
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Book trusted doctors in minutes
+            {/* Heading */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-slate-900 leading-[1.1] tracking-tight mb-6">
+              Quality healthcare,{" "}
+              <span className="text-blue-600">one click away.</span>
             </h1>
 
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Find verified doctors near you, book appointments instantly, and get quality healthcare when you need it.
+            <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg">
+              Find verified doctors near you, book appointments instantly, and
+              get the care you deserve — without the wait.
             </p>
 
-            {/* Simple CTAs */}
-            <div className="flex flex-wrap gap-4 mb-12">
-              <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg flex items-center gap-2">
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-3 mb-14">
+              <Link
+                to="/doctors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-200 text-sm"
+              >
                 Find a Doctor
-                <ArrowRight size={20} />
-              </button>
-              <button className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold rounded-lg flex items-center gap-2">
-                <Video size={20} />
-                Video Consultation
-              </button>
+                <ArrowRight size={16} />
+              </Link>
+              <Link
+                to="/doctors?type=online"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all duration-200 text-sm"
+              >
+                <Video size={16} className="text-slate-500" />
+                Video Consult
+              </Link>
             </div>
 
-            {/* Real Stats - Simple Layout */}
-            <div className="flex items-center gap-8 pt-8 border-t border-gray-200">
-              <div>
-                <div className="text-3xl font-bold text-gray-900">4.9</div>
-                <div className="text-sm text-gray-600 flex items-center gap-1">
-                  <Star size={14} className="text-yellow-500 fill-yellow-500" />
-                  Average rating
-                </div>
-              </div>
-              <div className="h-12 w-px bg-gray-200"></div>
-              <div>
-                <div className="text-3xl font-bold text-gray-900">2,500+</div>
-                <div className="text-sm text-gray-600">Verified doctors</div>
-              </div>
-              <div className="h-12 w-px bg-gray-200"></div>
-              <div>
-                <div className="text-3xl font-bold text-gray-900">50K+</div>
-                <div className="text-sm text-gray-600">Happy patients</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side - Clean Search Card */}
-          <div>
-            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Find Your Doctor</h3>
-              <p className="text-gray-600 mb-6">Search by specialty, location, or doctor name</p>
-
-              {/* Specialty Filter - Horizontal Scroll on Mobile */}
-              <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-                {chips.map((chip) => (
-                  <button
-                    key={chip}
-                    onClick={() => setActiveChip(chip)}
-                    className={`px-4 py-2 rounded-lg font-medium whitespace-nowrap ${
-                      activeChip === chip
-                        ? "bg-blue-600 text-white"
-                        : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
-                    }`}
-                  >
-                    {chip}
-                  </button>
-                ))}
-              </div>
-
-              {/* Search Inputs - Clean & Simple */}
-              <div className="space-y-4">
-                <div className="relative">
-                  <Search size={20} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="text"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Search doctors or specialties..."
-                    className="w-full pl-12 pr-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-
-                <div className="relative">
-                  <MapPin size={20} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="text"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    placeholder="Enter your city"
-                    className="w-full pl-12 pr-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-
-                <button className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg flex items-center justify-center gap-2">
-                  <Search size={20} />
-                  Search Doctors
-                </button>
-              </div>
-
-              {/* Popular Searches - Human Touch */}
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <div className="text-sm text-gray-600 mb-3">Popular searches:</div>
-                <div className="flex flex-wrap gap-2">
-                  {["Fever", "Skin problems", "Child checkup", "Dental care"].map((term) => (
-                    <button
-                      key={term}
-                      className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-700 hover:bg-gray-50"
-                    >
-                      {term}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Featured Doctor - Real Feel */}
-            <div className="mt-6 bg-white rounded-2xl p-6 border border-gray-200">
-              <div className="flex items-start gap-4">
-                <img
-                  src="https://randomuser.me/api/portraits/women/44.jpg"
-                  alt="Dr. Sarah Khan"
-                  className="w-16 h-16 rounded-xl"
-                />
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="font-bold text-gray-900">Dr. Sarah Khan</div>
-                    <CheckCircle size={18} className="text-blue-600" />
+            {/* Stats row */}
+            <div className="flex flex-wrap items-center gap-8 pt-8 border-t border-slate-100">
+              {stats.map(({ value, label, star }) => (
+                <div key={label}>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-2xl font-extrabold text-slate-900">
+                      {value}
+                    </span>
+                    {star && (
+                      <Star size={16} className="text-amber-400 fill-amber-400 mt-0.5" />
+                    )}
                   </div>
-                  <div className="text-gray-600 mb-2">Cardiologist • 10 years exp</div>
-                  <div className="flex items-center gap-4 text-sm">
-                    <div className="flex items-center gap-1">
-                      <Star size={16} className="text-yellow-500 fill-yellow-500" />
-                      <span className="font-semibold">4.9</span>
-                      <span className="text-gray-500">(234 reviews)</span>
-                    </div>
-                    <div className="flex items-center gap-1 text-green-600">
-                      <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                      Available today
-                    </div>
-                  </div>
+                  <p className="text-sm text-slate-400 font-medium mt-0.5">{label}</p>
                 </div>
-                <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium text-sm">
-                  Book
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Simple Features Grid */}
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="inline-flex p-4 bg-blue-50 rounded-2xl mb-4">
-              <Clock size={32} className="text-blue-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Quick Appointments</h3>
-            <p className="text-gray-600">Book appointments in under 2 minutes. Same-day slots available.</p>
-          </div>
-          
-          <div className="text-center">
-            <div className="inline-flex p-4 bg-green-50 rounded-2xl mb-4">
-              <Shield size={32} className="text-green-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Verified Doctors</h3>
-            <p className="text-gray-600">All doctors are PMC certified and thoroughly verified.</p>
-          </div>
-          
-          <div className="text-center">
-            <div className="inline-flex p-4 bg-purple-50 rounded-2xl mb-4">
-              <Video size={32} className="text-purple-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Teleconsultation</h3>
-            <p className="text-gray-600">Connect with doctors online from the comfort of your home.</p>
-          </div>
-        </div>
-
-        {/* Patient Testimonial - Real & Authentic */}
-        <div className="mt-16 bg-blue-50 rounded-2xl p-8 border border-blue-100">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-1 mb-4">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={20} className="text-yellow-500 fill-yellow-500" />
               ))}
             </div>
-            <p className="text-xl text-gray-900 mb-4 leading-relaxed">
-              "I was able to book an appointment with a cardiologist the same day. The doctor was professional, and the whole process was smooth. Highly recommend HealthBridge!"
-            </p>
-            <div className="flex items-center gap-3">
-              <img
-                src="https://randomuser.me/api/portraits/men/32.jpg"
-                alt="Patient"
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <div className="font-semibold text-gray-900">Ahmed Ali</div>
-                <div className="text-sm text-gray-600">Patient from Karachi</div>
-              </div>
-            </div>
           </div>
-        </div>
 
-        {/* Trust Badges - Simple & Clean */}
-        <div className="mt-16 pt-12 border-t border-gray-200">
-          <div className="text-center mb-8">
-            <p className="text-sm text-gray-500 uppercase tracking-wide font-medium">Trusted & Certified</p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            <div className="flex items-center gap-2 text-gray-600">
-              <Shield size={28} />
-              <span className="font-semibold">PMC Certified</span>
+          {/* ── Right: Doctor Cards ── */}
+          <div className="flex flex-col gap-4">
+
+            {/* Header row */}
+            <div className="flex items-center justify-between mb-1">
+              <p className="text-sm font-bold text-slate-700">
+                Available right now
+              </p>
+              <Link
+                to="/doctors"
+                className="text-sm font-semibold text-blue-600 hover:underline underline-offset-2 flex items-center gap-1"
+              >
+                See all
+                <ArrowRight size={13} />
+              </Link>
             </div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <CheckCircle size={28} />
-              <span className="font-semibold">ISO Compliant</span>
+
+            {doctors.map((doc) => (
+              <div
+                key={doc.name}
+                className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-4"
+              >
+                <div className="relative shrink-0">
+                  <img
+                    src={doc.img}
+                    alt={doc.name}
+                    className="w-14 h-14 rounded-xl object-cover"
+                  />
+                  {doc.available && (
+                    <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full" />
+                  )}
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-1.5">
+                    <p className="font-bold text-slate-900 text-sm truncate">{doc.name}</p>
+                    <CheckCircle size={14} className="text-blue-500 shrink-0" />
+                  </div>
+                  <p className="text-xs text-slate-400 font-medium mt-0.5">
+                    {doc.specialty}
+                  </p>
+                  <div className="flex items-center gap-1 mt-1.5">
+                    <Star size={12} className="text-amber-400 fill-amber-400" />
+                    <span className="text-xs font-bold text-slate-700">
+                      {doc.rating}
+                    </span>
+                    <span className="text-xs text-slate-400">
+                      ({doc.reviews} reviews)
+                    </span>
+                  </div>
+                </div>
+
+                <Link
+                  to={`/doctors`}
+                  className="shrink-0 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg transition-colors"
+                >
+                  Book
+                </Link>
+              </div>
+            ))}
+
+            {/* Availability note */}
+            <div className="flex items-center gap-2 px-4 py-3 bg-emerald-50 border border-emerald-100 rounded-xl">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+              <p className="text-xs font-semibold text-emerald-700">
+                38 doctors are available for appointments today
+              </p>
             </div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <Heart size={28} />
-              <span className="font-semibold">Patient First</span>
-            </div>
+
           </div>
         </div>
       </div>
-    </div>
+
+      {/* ── Features Strip ── */}
+      <div className="border-t border-slate-100 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-14">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            {features.map(({ icon: Icon, color, title, desc }) => (
+              <div key={title} className="flex items-start gap-4">
+                <div className={`p-3 rounded-xl shrink-0 ${color}`}>
+                  <Icon size={22} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800 text-sm mb-1">{title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Testimonial ── */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-16">
+        <div className="bg-blue-600 rounded-3xl p-8 sm:p-12 flex flex-col sm:flex-row items-start sm:items-center gap-8">
+          <div className="flex-1">
+            <div className="flex gap-0.5 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={16} className="text-amber-300 fill-amber-300" />
+              ))}
+            </div>
+            <p className="text-white text-lg sm:text-xl font-medium leading-relaxed mb-6 max-w-xl">
+              "I booked a cardiologist the same day. The process was so smooth —
+              I didn't have to wait at all. This is how healthcare should work."
+            </p>
+            <div className="flex items-center gap-3">
+              <img
+                src="https://randomuser.me/api/portraits/men/54.jpg"
+                alt="Ahmed Ali"
+                className="w-10 h-10 rounded-full border-2 border-white/30"
+              />
+              <div>
+                <p className="text-white font-bold text-sm">Ahmed Ali</p>
+                <p className="text-blue-200 text-xs font-medium">Patient from Karachi</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right side CTA */}
+          <div className="shrink-0">
+            <Link
+              to="/doctors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-blue-700 font-bold rounded-xl text-sm hover:bg-blue-50 transition-colors shadow-md"
+            >
+              Book Your Appointment
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+    </section>
   );
 }
