@@ -1,6 +1,7 @@
 
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -20,10 +21,10 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2 text-gray-100 text-sm">
-            <li><a href="/" className="hover:text-yellow-300 transition">Home</a></li>
-            <li><a href="/about" className="hover:text-yellow-300 transition">About Us</a></li>
-            <li><a href="/doctors" className="hover:text-yellow-300 transition">Find a Doctor</a></li>
-            <li><a href="/contact" className="hover:text-yellow-300 transition">Contact</a></li>
+            <li><Link to="/" className="hover:text-yellow-300 transition">Home</Link></li>
+            <li><Link to="/about" className="hover:text-yellow-300 transition">About Us</Link></li>
+            <li><Link to="/doctors" className="hover:text-yellow-300 transition">Find a Doctor</Link></li>
+            <li><Link to="/contact" className="hover:text-yellow-300 transition">Contact</Link></li>
           </ul>
         </div>
 
@@ -31,10 +32,10 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-4">Support</h3>
           <ul className="space-y-2 text-gray-100 text-sm">
-            <li><a href="/faq" className="hover:text-yellow-300 transition">FAQ</a></li>
-            <li><a href="/terms" className="hover:text-yellow-300 transition">Terms & Conditions</a></li>
-            <li><a href="/privacy" className="hover:text-yellow-300 transition">Privacy Policy</a></li>
-            <li><a href="/help" className="hover:text-yellow-300 transition">Help Center</a></li>
+            <li><Link href="/faq" className="hover:text-yellow-300 transition">FAQ</Link></li>
+            <li><Link to="/terms" className="hover:text-yellow-300 transition">Terms & Conditions</Link></li>
+            <li><Link to="/privacy" className="hover:text-yellow-300 transition">Privacy Policy</Link></li>
+            <li><Link to="/help" className="hover:text-yellow-300 transition">Help Center</Link></li>
           </ul>
         </div>
 
@@ -59,16 +60,16 @@ export default function Footer() {
 
       {/* Social Icons */}
       <div className="mt-10 flex justify-center space-x-5">
-        <a href="#" className="bg-white text-blue-600 p-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
+        <a href="https://www.facebook.com/profile.php?id=61577765708766" className="bg-white text-blue-600 p-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
           <FaFacebookF size={20} />
         </a>
-        <a href="#" className="bg-white text-blue-400 p-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
+        <a href="https://x.com/Atta_Ullah92" className="bg-white text-blue-400 p-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
           <FaTwitter size={20} />
         </a>
-        <a href="#" className="bg-white text-pink-500 p-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
+        <a href="https://www.instagram.com/atta_ullah96" className="bg-white text-pink-500 p-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
           <FaInstagram size={20} />
         </a>
-        <a href="#" className="bg-white text-blue-700 p-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
+        <a href="https://www.linkedin.com/in/atta-ullah-291725253" className="bg-white text-blue-700 p-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
           <FaLinkedinIn size={20} />
         </a>
       </div>
