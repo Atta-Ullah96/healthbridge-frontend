@@ -22,6 +22,10 @@ import ProfilePage from "../../../doctor/pages/ProfilePage";
 import BookAppointment from "../../pages/BookAppointment";
 import AppointmentSuccess from "../../pages/successfullAppointment";
 import VideoCall from "../../pages/canJoinACall";
+import { FAQPage } from "../../pages/faqsPage";
+import { TermsPage } from "../../pages/TermPage";
+import { PrivacyPolicyPage } from "../../pages/privacyPage";
+import HelpCenterPage from "../../pages/helpcenter";
 
 
 const DoctorVerificationPending = lazy(() => import("../../../doctor/pages/DoctorVerificationPending"));
@@ -69,11 +73,46 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+
       {
         path: "register-doctor",
         element: (
           <Suspense fallback={<Loader size={100} />}>
             <RegisterDoctor />
+          </Suspense>
+        ),
+      },
+      {
+      path: "faq",
+        element: (
+          <Suspense fallback={<Loader size={100} />}>
+            <FAQPage />
+          </Suspense>
+        ),
+      },
+       {
+      path: "terms",
+        element: (
+          <Suspense fallback={<Loader size={100} />}>
+            <TermsPage />
+          </Suspense>
+        ),
+      },
+
+       {
+      path: "privacy",
+        element: (
+          <Suspense fallback={<Loader size={100} />}>
+            <PrivacyPolicyPage />
+          </Suspense>
+        ),
+      },
+
+       {
+      path: "help",
+        element: (
+          <Suspense fallback={<Loader size={100} />}>
+            <HelpCenterPage />
           </Suspense>
         ),
       },
