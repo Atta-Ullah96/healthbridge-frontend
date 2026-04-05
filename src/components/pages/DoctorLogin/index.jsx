@@ -71,7 +71,7 @@ const JoinAsaDoctor = () => {
       // The 'credential' is the JWT from Google
       const result = await googleLogin(response.credential).unwrap();
       
-        navigate('/doctor/dashboard');
+        navigate('/doctor/profile');
       
       // Logic: Save user to Redux state or Redirect to Dashboard
     } catch (err) {
