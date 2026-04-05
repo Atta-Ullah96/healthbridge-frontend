@@ -70,10 +70,9 @@ const JoinAsaDoctor = () => {
     try {
       // The 'credential' is the JWT from Google
       const result = await googleLogin(response.credential).unwrap();
-      console.log('Backend Response:', result);
-      if(result.success){
-        navigate('/doctor');
-      }
+      
+        navigate('/doctor/dashboard');
+      
       // Logic: Save user to Redux state or Redirect to Dashboard
     } catch (err) {
       console.error('Failed to authenticate with backend:', err);
