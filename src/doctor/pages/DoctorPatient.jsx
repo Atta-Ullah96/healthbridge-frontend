@@ -1,77 +1,15 @@
 import { useState } from "react";
 import { Search, User, Calendar, FileText, Eye, Phone, Mail } from "lucide-react";
+import { useGetAllPatientsQuery } from "../../api/doctorApi";
 
-function mockPatients() {
-  return [
-    { 
-      id: "p1", 
-      name: "Ali Raza", 
-      lastVisit: "2025-06-15", 
-      notes: "Asthma follow-up",
-      age: 34,
-      phone: "+92 300 1234567",
-      email: "ali.raza@email.com",
-      visits: 5
-    },
-    { 
-      id: "p2", 
-      name: "Sara Malik", 
-      lastVisit: "2025-07-20", 
-      notes: "Vaccination",
-      age: 28,
-      phone: "+92 301 7654321",
-      email: "sara.malik@email.com",
-      visits: 2
-    },
-    { 
-      id: "p3", 
-      name: "Hassan Khan", 
-      lastVisit: "2025-08-10", 
-      notes: "Regular checkup",
-      age: 45,
-      phone: "+92 333 9876543",
-      email: "hassan@email.com",
-      visits: 8
-    },
-    { 
-      id: "p4", 
-      name: "Fatima Ali", 
-      lastVisit: "2025-09-05", 
-      notes: "Blood pressure monitoring",
-      age: 52,
-      phone: "+92 321 5551234",
-      email: "fatima.ali@email.com",
-      visits: 12
-    },
-    { 
-      id: "p5", 
-      name: "Ahmed Shah", 
-      lastVisit: "2025-10-15", 
-      notes: "Diabetes management",
-      age: 39,
-      phone: "+92 345 7778899",
-      email: "ahmed.shah@email.com",
-      visits: 6
-    },
-    { 
-      id: "p6", 
-      name: "Zainab Hussain", 
-      lastVisit: "2025-11-22", 
-      notes: "Routine consultation",
-      age: 31,
-      phone: "+92 312 4445566",
-      email: "zainab@email.com",
-      visits: 3
-    },
-  ];
-}
 
 function DoctorPatient() {
   const [query, setQuery] = useState("");
-  const [patients] = useState(mockPatients());
   const [selectedPatient, setSelectedPatient] = useState(null);
+  const {data} =  useGetAllPatientsQuery()
+  const patients = data?.patients
   
-  const list = patients.filter((p) => 
+  const list = patients?.filter((p) => 
     p.name.toLowerCase().includes(query.toLowerCase()) ||
     p.id.toLowerCase().includes(query.toLowerCase())
   );
@@ -110,33 +48,33 @@ function DoctorPatient() {
 
         {/* Patients grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {list.length > 0 ? (
-            list.map((p) => (
+          {list?.length > 0 ? (
+            list?.map((p) => (
               <div key={p.id} className="bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition">
                 <div className="p-5">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 font-medium">
-                        {p.name.split(' ').map(n => n[0]).join('')}
+                        {p?.name.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
-                        <h3 className="font-medium text-gray-900">{p.name}</h3>
-                        <p className="text-xs text-gray-500">{p.age} years</p>
+                        <h3 className="font-medium text-gray-900">{p?.name}</h3>
+                        <p className="text-xs text-gray-500">{p?.age} years</p>
                       </div>
                     </div>
                     <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                      {p.visits} visits
+                      {p?.visits} visits
                     </span>
                   </div>
 
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-2 text-sm text-gray-600">
                       <Calendar size={14} className="text-blue-600" />
-                      <span>Last visit: {formatDate(p.lastVisit)}</span>
+                      <span>Last visit: {formatDate(p?.lastVisit)}</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm text-gray-600">
                       <FileText size={14} className="text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span className="line-clamp-2">{p.notes || "No notes"}</span>
+                      <span className="line-clamp-2">{p?.notes || "No notes"}</span>
                     </div>
                   </div>
 

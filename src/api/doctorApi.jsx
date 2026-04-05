@@ -238,7 +238,14 @@ export const doctorApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["DoctorSignInSignUp"]
         }),
-
+     
+           getAllPatients: builder.query({
+            query: () => ({
+                url: "/doctor/patients",
+                method: "GET",
+            }),
+            providesTags: ["DoctorSignInSignUp"],
+        }),
     }),
 });
 
@@ -273,5 +280,6 @@ export const {
     useCreateOrUpdateAvailabilityMutation,
     useGetDoctorAvailabilityQuery,
     useJoinVideoCallByDoctorMutation,
-    useGoogleLoginMutation
+    useGoogleLoginMutation,
+    useGetAllPatientsQuery
 } = doctorApi;
